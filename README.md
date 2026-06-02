@@ -96,3 +96,16 @@ SQLALCHEMY_DATABASE_URL = "postgresql://user:password@localhost/ratefluencer"
 ```
 
 And remove the `connect_args` parameter.
+
+## Made with ❤️
+
+This project was crafted with passion and dedication.
+
+## Future Improvements
+
+We are constantly working to enhance Ratefluencer AI Copilot. Here are some areas we plan to explore:
+
+*   **Advanced AI Models**: Integrating more sophisticated AI models for deeper insights and content generation.
+*   **More Social Media Platforms**: Expanding support to additional social media platforms beyond Instagram and LinkedIn.
+*   **User Customization**: Allowing users to customize AI models and content generation parameters.
+*   **Real-time Analytics**: Providing real-time data and analytics for influencer performance and content virality.
