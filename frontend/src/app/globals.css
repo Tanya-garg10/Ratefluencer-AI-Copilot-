@@ -1,0 +1,265 @@
+@import "tailwindcss";
+
+/* ===== CSS Theme Variables ===== */
+:root {
+  --background: #0d0d14;
+  --background-secondary: #13131f;
+  --foreground: #f0f0ff;
+  --foreground-muted: #8888aa;
+  --card: #16161f;
+  --card-hover: #1c1c2a;
+  --card-border: rgba(255, 255, 255, 0.07);
+  --primary: #7c3aed;
+  --primary-foreground: #ffffff;
+  --accent: #06b6d4;
+  --accent-secondary: #10b981;
+  --destructive: #ef4444;
+  --warning: #f59e0b;
+  --success: #10b981;
+  --sidebar-bg: #0d0d14;
+  --sidebar-border: rgba(255, 255, 255, 0.07);
+  --input-bg: #1c1c2a;
+  --input-border: rgba(255, 255, 255, 0.1);
+  --glow-primary: rgba(124, 58, 237, 0.25);
+  --glow-accent: rgba(6, 182, 212, 0.2);
+}
+
+.light {
+  --background: #f4f4f8;
+  --background-secondary: #eeeef5;
+  --foreground: #0d0d14;
+  --foreground-muted: #55556a;
+  --card: #ffffff;
+  --card-hover: #f8f8fc;
+  --card-border: rgba(0, 0, 0, 0.08);
+  --primary: #7c3aed;
+  --primary-foreground: #ffffff;
+  --accent: #0891b2;
+  --accent-secondary: #059669;
+  --destructive: #dc2626;
+  --warning: #d97706;
+  --success: #059669;
+  --sidebar-bg: #ffffff;
+  --sidebar-border: rgba(0, 0, 0, 0.08);
+  --input-bg: #f1f1f7;
+  --input-border: rgba(0, 0, 0, 0.12);
+  --glow-primary: rgba(124, 58, 237, 0.12);
+  --glow-accent: rgba(6, 182, 212, 0.1);
+}
+
+/* ===== Base Styles ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ===== Cards ===== */
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+}
+
+.card-hover {
+  transition: all 0.2s ease;
+}
+
+.card-hover:hover {
+  background: var(--card-hover);
+  border-color: rgba(139, 92, 246, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(139, 92, 246, 0.1);
+}
+
+/* legacy alias */
+.glass {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+}
+
+.card-glow {
+  transition: all 0.2s ease;
+}
+
+.card-glow:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Gradient Text ===== */
+.gradient-text {
+  background: linear-gradient(135deg, #a78bfa, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== Background grid ===== */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(rgba(139, 92, 246, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse-ring {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(139, 92, 246, 0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.45s ease-out both;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.5);
+}
+
+/* ===== Input ===== */
+.input-styled {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: var(--foreground);
+  font-size: 14px;
+  line-height: 1.5;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  outline: none;
+  width: 100%;
+}
+
+.input-styled:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.18);
+}
+
+.input-styled::placeholder {
+  color: var(--foreground-muted);
+}
+
+/* ===== Button ===== */
+.btn-primary {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== Score bar ===== */
+.score-bar {
+  height: 4px;
+  background: var(--input-bg);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.score-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== Recharts overrides ===== */
+.recharts-default-tooltip {
+  background: #1c1c2a !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+  color: #f0f0ff !important;
+}
+
+.recharts-tooltip-label {
+  color: #f0f0ff !important;
+  font-weight: 600 !important;
+}
+
+.recharts-text {
+  fill: var(--foreground-muted) !important;
+}
